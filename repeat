@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# example repeat 10 echo hello
+args=$@
+cmd=${args#*$1}
+declare -i num=$1
+#echo $args
+for i in $( seq 1 $num )
+do
+        $cmd
+#done 2>&1
+done 2>&1 | less -R
