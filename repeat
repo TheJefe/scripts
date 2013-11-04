@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # example repeat 10 echo hello
+# To repeat the last command 10 times:
+# repeat 10 !!
 args=$@
 cmd=${args#*$1}
 declare -i num=$1
