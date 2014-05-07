@@ -1,14 +1,13 @@
 #!/usr/bin/env ruby
 
 require 'httparty'
-require 'pry'
 
 GITHUB_TOKEN=ENV['GITHUB_TOKEN']
 GITHUB_USERNAME=ENV['GITHUB_USERNAME']
 GITHUB_BASE_URL="https://api.github.com"
 ORG_NAME="thinkthroughmath"
 APP_LIST=["apangea","lesson-player","reporting","live_teaching"]
-LABELS="Needs+QA"
+LABELS="Needs+QA" #comma delimited list
 ISSUES_ENDPOINT="issues?access_token=#{GITHUB_TOKEN}&labels=#{LABELS}"
 
 
