@@ -14,6 +14,14 @@ ISSUES_ENDPOINT="issues?access_token=#{GITHUB_TOKEN}&sort=updated"
 @find_qa_issues = true
 @find_dev_issues = false
 
+def check_environment
+  if GITHUB_USERNAME == nil || GITHUB_TOKEN == nil
+    raise "environment variables not set. Please check that you have the following set...\
+      \nGITHUB_USERNAME\nGITHUB_TOKEN\n\
+      For example, I have mine set in /etc/profile"
+  end
+end
+
 def get_qa_issues_for(app_name)
   HTTParty.get("#{GITHUB_BASE_URL}/repos/#{ORG_NAME}/#{app_name}/#{ISSUES_ENDPOINT}&labels=#{QA_LABELS}",
       {
@@ -47,7 +55,7 @@ def print(issues)
 end
 
 # MAIN
-
+check_environment
 unless ARGV[0].nil?
   if ARGV[0].casecmp("dev") == 0
     @find_qa_issues = false
