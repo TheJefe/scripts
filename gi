@@ -9,7 +9,7 @@ ORG_NAME="thinkthroughmath"
 APP_LIST=["apangea","lesson-player","reporting","live_teaching","ux-pattern"]
 QA_LABELS="Needs+QA"
 DEV_LABELS="Needs+Code+Review"
-ISSUES_ENDPOINT="issues?access_token=#{GITHUB_TOKEN}&sort=updated"
+ISSUES_ENDPOINT="issues?access_token=#{GITHUB_TOKEN}&sort=updated&direction=asc"
 
 @find_qa_issues = true
 @find_dev_issues = false
@@ -55,7 +55,7 @@ def print(issues)
 end
 
 # MAIN
-check_environment
+
 unless ARGV[0].nil?
   if ARGV[0].casecmp("dev") == 0
     @find_qa_issues = false
